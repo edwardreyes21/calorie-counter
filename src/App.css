@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Carter One', 'Times New Roman', Times, serif;
+}
