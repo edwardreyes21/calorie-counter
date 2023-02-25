@@ -12,13 +12,14 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(`Gender: ${gender}, Weight: ${weight}, Age: ${age}`);
   }
 
   return (
     <div className="App">
         <h1>Calorie Counter</h1>
         <p>Fill out the form to calculate your weight trajectory over time</p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>
             Male
             <input type="radio" value="male" checked={gender === "male"} onChange={handleGenderChange} />
@@ -35,6 +36,7 @@ function App() {
             Weight:
             <input type="number" step="1" value={weight} onChange={(event) => setWeight(event.target.value)} />
           </label>
+          <button type="submit">Submit</button>
         </form>
     </div>
   );
