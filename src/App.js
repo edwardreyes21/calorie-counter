@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [tdee, setTDEE] = useState(null);
   const [gender, setGender] = useState("male");
   const [weight, setWeight] = useState(0);
   const [age, setAge] = useState(0);
@@ -38,6 +39,7 @@ function App() {
           </label>
           <button type="submit">Submit</button>
         </form>
+        {tdee && <p>Your TDEE is {tdee}</p>}
     </div>
   );
 }
