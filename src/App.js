@@ -22,19 +22,19 @@ function App() {
     console.log(`Measurement: ${measurement}, Gender: ${gender},
                  Height: ${height}, Weight: ${weight}, Age: ${age}`);
 
-    if (measurement == "imperial") {
-      if (gender == "male") {
+    if (measurement === "imperial") {
+      if (gender === "male") {
         setTDEE(66.47 + (6.24 * weight) + (12.7 * height) - (6.75 * age));
       } 
-      else if (gender == "female") {
+      else if (gender === "female") {
         setTDEE(65.51 + (4.35 * weight) + (4.7 * height) - (4.7 * age));
       }
     } 
-    else if (measurement == "metric") {
-      if (gender == "male") {
+    else if (measurement === "metric") {
+      if (gender === "male") {
         setTDEE(66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age));
       } 
-      else if (gender == "female") {
+      else if (gender === "female") {
         setTDEE(655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
       }
     }
