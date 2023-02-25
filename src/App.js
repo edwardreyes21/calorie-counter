@@ -2,10 +2,15 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [measurement, setMeasurement] = useState("imperial");
   const [tdee, setTDEE] = useState(null);
   const [gender, setGender] = useState("male");
   const [weight, setWeight] = useState(0);
   const [age, setAge] = useState(0);
+
+  const handleMeasurementChange = (event) => {
+    setMeasurement(event.target.value);
+  }
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -13,7 +18,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Gender: ${gender}, Weight: ${weight}, Age: ${age}`);
+    console.log(`Measurement: ${measurement}, Gender: ${gender}, Weight: ${weight}, Age: ${age}`);
   }
 
   return (
@@ -21,6 +26,14 @@ function App() {
         <h1>Calorie Counter</h1>
         <p>Fill out the form to calculate your weight trajectory over time</p>
         <form onSubmit={handleSubmit}>
+          <label>
+            Imperial
+            <input type="radio" value="imperial" checked={measurement === "imperial"} onChange={handleMeasurementChange} />
+          </label>
+          <label>
+            Metric
+            <input type="radio" value="metric" checked={measurement === "metric"} onChange={handleMeasurementChange} />
+          </label>
           <label>
             Male
             <input type="radio" value="male" checked={gender === "male"} onChange={handleGenderChange} />
