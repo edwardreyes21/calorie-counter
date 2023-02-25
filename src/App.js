@@ -6,6 +6,7 @@ function App() {
   const [tdee, setTDEE] = useState(null);
   const [gender, setGender] = useState("male");
   const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState(0);
   const [age, setAge] = useState(0);
 
   const handleMeasurementChange = (event) => {
@@ -18,7 +19,25 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Measurement: ${measurement}, Gender: ${gender}, Weight: ${weight}, Age: ${age}`);
+    console.log(`Measurement: ${measurement}, Gender: ${gender},
+                 Height: ${height}, Weight: ${weight}, Age: ${age}`);
+
+    if (measurement == "imperial") {
+      if (gender == "male") {
+        setTDEE(66.47 + (6.24 * weight) + (12.7 * height) - (6.75 * age));
+      } 
+      else if (gender == "female") {
+        setTDEE(65.51 + (4.35 * weight) + (4.7 * height) - (4.7 * age));
+      }
+    } 
+    else if (measurement == "metric") {
+      if (gender == "male") {
+        setTDEE(66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age));
+      } 
+      else if (gender == "female") {
+        setTDEE(655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
+      }
+    }
   }
 
   return (
@@ -50,9 +69,13 @@ function App() {
             Weight:
             <input type="number" step="1" value={weight} onChange={(event) => setWeight(event.target.value)} />
           </label>
+          <label>
+            Height:
+            <input type="number" step="1" value={height} onChange={(event) => setHeight(event.target.value)} />
+          </label>
           <button type="submit">Submit</button>
         </form>
-        {tdee && <p>Your TDEE is {tdee}</p>}
+        {tdee && <p>Your TDEE is {tdee.toFixed(2)} calories</p>}
     </div>
   );
 }
