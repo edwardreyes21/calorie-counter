@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import ActivityForm from './ActivityForm';
 
 function App() {
   const [measurement, setMeasurement] = useState("imperial");
@@ -75,7 +76,10 @@ function App() {
           </label>
           <button type="submit">Submit</button>
         </form>
-        {tdee && <p>Your TDEE is {tdee.toFixed(2)} calories</p>}
+        {tdee && (
+          <ActivityForm tdee={tdee}/>
+        )}
+        
     </div>
   );
 }
