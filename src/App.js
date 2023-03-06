@@ -46,34 +46,40 @@ function App() {
         <h1>Calorie Counter</h1>
         <p>Fill out the form to calculate your weight trajectory over time</p>
         <form onSubmit={handleSubmit}>
-          <label>
-            Imperial
-            <input type="radio" value="imperial" checked={measurement === "imperial"} onChange={handleMeasurementChange} />
-          </label>
-          <label>
-            Metric
-            <input type="radio" value="metric" checked={measurement === "metric"} onChange={handleMeasurementChange} />
-          </label>
-          <label>
-            Male
-            <input type="radio" value="male" checked={gender === "male"} onChange={handleGenderChange} />
-          </label>
-          <label>
-            Female
-            <input type="radio" value="female" checked={gender === "female"} onChange={handleGenderChange} />
-          </label>
-          <label>
-            Age:
-            <input type="number" step="1" value={age} onChange={(event) => setAge(event.target.value)} />
-          </label>
-          <label>
-            Weight:
-            <input type="number" step="1" value={weight} onChange={(event) => setWeight(event.target.value)} />
-          </label>
-          <label>
-            Height:
-            <input type="number" step="1" value={height} onChange={(event) => setHeight(event.target.value)} />
-          </label>
+          <div className="input-container">
+            <label>
+              Imperial
+              <input type="radio" value="imperial" checked={measurement === "imperial"} onChange={handleMeasurementChange} />
+            </label>
+            <label>
+              Metric
+              <input type="radio" value="metric" checked={measurement === "metric"} onChange={handleMeasurementChange} className="opposite-side" />
+            </label>
+          </div>
+          <div className="input-container">
+            <label>
+              Male
+              <input type="radio" value="male" checked={gender === "male"} onChange={handleGenderChange} />
+            </label>
+            <label>
+              Female
+              <input type="radio" value="female" checked={gender === "female"} onChange={handleGenderChange} className="opposite-side" />
+            </label>
+          </div>
+          <div className="input-container">
+            <label>
+              Age:
+              <input type="number" step="1" value={age} onChange={(event) => setAge(event.target.value)} />
+            </label>
+            <label>
+              Weight:
+              <input type="number" step="1" value={weight} onChange={(event) => setWeight(event.target.value)} />
+            </label>
+            <label>
+              Height:
+              <input type="number" step="1" value={height} onChange={(event) => setHeight(event.target.value)} />
+            </label>
+          </div>
           <button type="submit">Submit</button>
         </form>
         {tdee && (
