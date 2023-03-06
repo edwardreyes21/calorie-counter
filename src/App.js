@@ -9,6 +9,7 @@ function App() {
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [age, setAge] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleMeasurementChange = (event) => {
     setMeasurement(event.target.value);
@@ -22,6 +23,12 @@ function App() {
     event.preventDefault();
     console.log(`Measurement: ${measurement}, Gender: ${gender},
                  Height: ${height}, Weight: ${weight}, Age: ${age}`);
+
+    setIsSubmitting(true);
+
+    setTimeout(() => {
+      setIsSubmitting(false)
+    }, 1000);
 
     if (measurement === "imperial") {
       if (gender === "male") {
@@ -80,7 +87,7 @@ function App() {
               <input type="number" step="1" value={height} onChange={(event) => setHeight(event.target.value)} />
             </label>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className={isSubmitting ? 'submitting' : ''}>Submit</button>
         </form>
         {tdee && (
           <ActivityForm tdee={tdee}/>

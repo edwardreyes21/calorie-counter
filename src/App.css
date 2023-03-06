@@ -49,3 +49,10 @@ button[type="submit"] {
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
+
+button.submitting {
+    background-color: #ccc;
+    color: #fff;
+    border-color: #ccc;
+    transition: background-color 0.3s ease-in-out;
+}
