@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import ActivityForm from './ActivityForm';
 
@@ -10,6 +10,14 @@ function App() {
   const [height, setHeight] = useState(0);
   const [age, setAge] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const appElement = document.querySelector(".App");
+
+    setTimeout(() => {
+      appElement.classList.remove('blur-in');
+    }, 500);
+  }, []);
 
   const handleMeasurementChange = (event) => {
     setMeasurement(event.target.value);
@@ -49,7 +57,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App blur-in">
         <h1>Calorie Counter</h1>
         <p>Fill out the form to calculate your weight trajectory over time</p>
         <form onSubmit={handleSubmit}>

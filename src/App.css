@@ -56,3 +56,8 @@ button.submitting {
     border-color: #ccc;
     transition: background-color 0.3s ease-in-out;
 }
+
+.blur-in {
+    filter: blur(10px);
+    transition: filter 2s ease-out;
+}  
