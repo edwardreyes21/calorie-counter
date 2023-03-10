@@ -105,7 +105,7 @@ function App() {
           <button type="submit" className={isSubmitting ? 'submitting' : ''}>Submit</button>
         </form>
         {tdee && (
-          <ActivityForm caloriesConsumed={caloriesConsumed} weight={weight} tdee={tdee} />
+          <ActivityForm measurement={measurement} caloriesConsumed={caloriesConsumed} weight={weight} tdee={tdee} />
         )}
         
     </div>
