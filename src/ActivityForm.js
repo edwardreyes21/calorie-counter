@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 function ActivityForm(props) {
     const [multiplier, setMultiplier] = useState(1);
+    const [tdee, setTDEE] = useState(props.tdee);
 
     const handleMultiplierChange = (event) => {
         setMultiplier(event.target.value);
@@ -9,7 +10,7 @@ function ActivityForm(props) {
 
     return (
         <div className="ActivityForm">
-            <p>TDEE: {(props.tdee * multiplier).toFixed(2)}</p>
+            <p>TDEE: {(tdee * multiplier).toFixed(2)}</p>
             <form>
                 <label for="choices">Choose one:</label>
                 <select id="choices" name="choices" value={multiplier} onChange={handleMultiplierChange}>
