@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import WeightTable from './WeightTable';
 
 function ActivityForm(props) {
     const [multiplier, setMultiplier] = useState(1);
@@ -22,6 +23,7 @@ function ActivityForm(props) {
                     <option value="1.9">Extremely Active (1.9)</option>
                 </select>
             </form>
+            <WeightTable />
         </div>
     );
 }
