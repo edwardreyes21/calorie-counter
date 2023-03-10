@@ -23,7 +23,7 @@ function ActivityForm(props) {
                     <option value="1.9">Extremely Active (1.9)</option>
                 </select>
             </form>
-            <WeightTable />
+            <WeightTable weight={props.weight} />
         </div>
     );
 }

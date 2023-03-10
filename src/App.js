@@ -98,7 +98,7 @@ function App() {
           <button type="submit" className={isSubmitting ? 'submitting' : ''}>Submit</button>
         </form>
         {tdee && (
-          <ActivityForm tdee={tdee}/>
+          <ActivityForm weight={weight} tdee={tdee} />
         )}
         
     </div>
