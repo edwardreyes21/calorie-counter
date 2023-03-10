@@ -9,6 +9,7 @@ function App() {
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [age, setAge] = useState(0);
+  const [caloriesConsumed, setCaloriesConsumed] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -95,10 +96,16 @@ function App() {
               <input type="number" step="1" value={height} onChange={(event) => setHeight(event.target.value)} />
             </label>
           </div>
+          <div className="input-container">
+            <label>
+              Daily calories to consume:
+              <input type="number" step="1" value={caloriesConsumed} onChange={(event) => setCaloriesConsumed(event.target.value)} />
+            </label>
+          </div>
           <button type="submit" className={isSubmitting ? 'submitting' : ''}>Submit</button>
         </form>
         {tdee && (
-          <ActivityForm weight={weight} tdee={tdee} />
+          <ActivityForm caloriesConsumed={caloriesConsumed} weight={weight} tdee={tdee} />
         )}
         
     </div>
