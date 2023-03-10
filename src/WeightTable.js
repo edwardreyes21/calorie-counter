@@ -15,7 +15,7 @@ function WeightTable(props) {
 
         if (props.measurement == "imperial") {
             console.log(`  old weight: ${weight}`)
-            weight = weight - (weeklyCaloricDeficit / 3500);
+            weight = (weight - (weeklyCaloricDeficit / 3500)).toFixed(2);
             console.log(`  new weight: ${weight}`)
         }
         else if (props.measurement == "metric") {
@@ -26,6 +26,22 @@ function WeightTable(props) {
     return (
         <div className="WeightTable">
             <h2>Weight Gain/Loss Tracker</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Weight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {weightData.map((row) => (
+                        <tr key={row.week}>
+                            <td>{row.week}</td>
+                            <td>{row.new_weight}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
