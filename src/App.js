@@ -23,19 +23,14 @@ function App() {
 
   const handleMeasurementChange = (event) => {
     setMeasurement(event.target.value);
-    console.log('measurement change');
   }
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
-    console.log('gender change');
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Measurement: ${measurement}, Gender: ${gender},
-                 Height: ${height}, Weight: ${weight}, Age: ${age}`);
-    console.log(`original tdee: ${tdee}`);
 
     setIsSubmitting(true);
     setSubmitClicked(true);
@@ -67,29 +62,19 @@ function App() {
   }, [tdee]);
 
   useEffect(() => {
-    console.log(`Measurement: ${measurement}, Gender: ${gender},
-                 Height: ${height}, Weight: ${weight}, Age: ${age}`);
-    console.log(`original tdee: ${tdee}`);
-
     if (measurement === "imperial") {
-      console.log('measurement is imperial');
       if (gender === "male") {
-        console.log('gender is male');
         setTDEE(66.47 + (6.24 * weight) + (12.7 * height) - (6.75 * age));
       } 
       else if (gender === "female") {
-        console.log('gender is female');
         setTDEE(65.51 + (4.35 * weight) + (4.7 * height) - (4.7 * age));
       }
     } 
     else if (measurement === "metric") {
-      console.log('measurement is metric');
       if (gender === "male") {
-        console.log('gender is male');
         setTDEE(66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age));
       } 
       else if (gender === "female") {
-        console.log('gender is female');
         setTDEE(655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
       }
     }
