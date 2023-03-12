@@ -25,7 +25,12 @@ function ActivityForm(props) {
                     <option value="1.9">Extremely Active (1.9)</option>
                 </select>
             </form>
-            <WeightTable measurement={props.measurement} caloriesConsumed={props.caloriesConsumed} weight={props.weight} tdee={tdee} />
+            <WeightTable 
+                measurement={props.measurement} 
+                caloriesConsumed={props.caloriesConsumed} 
+                weight={props.weight} 
+                tdee={tdee} 
+            />
         </div>
     );
 }
