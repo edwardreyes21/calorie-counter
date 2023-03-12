@@ -19,7 +19,7 @@ function WeightTable(props) {
             console.log(`  new weight: ${weight}`)
         }
         else if (props.measurement == "metric") {
-            weight = weight - (weeklyCaloricDeficit / 7700);
+            weight = (weight - (weeklyCaloricDeficit / 7700)).toFixed(2);
         }
     }
 
