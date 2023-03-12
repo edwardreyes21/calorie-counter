@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import WeightTable from './WeightTable';
 
 function ActivityForm(props) {
@@ -10,6 +10,10 @@ function ActivityForm(props) {
         setMultiplier(event.target.value);
         setTDEE(originalTDEE * event.target.value);
     }
+
+    useEffect(() => {
+        setTDEE(props.tdee);
+    }, [props.tdee]);
 
     return (
         <div className="ActivityForm">
