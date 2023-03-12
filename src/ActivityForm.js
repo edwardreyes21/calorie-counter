@@ -4,14 +4,16 @@ import WeightTable from './WeightTable';
 function ActivityForm(props) {
     const [multiplier, setMultiplier] = useState(1);
     const [tdee, setTDEE] = useState(props.tdee);
+    const originalTDEE = props.tdee;
 
     const handleMultiplierChange = (event) => {
         setMultiplier(event.target.value);
+        setTDEE(originalTDEE * event.target.value);
     }
 
     return (
         <div className="ActivityForm">
-            <p>TDEE: {(tdee * multiplier).toFixed(2)}</p>
+            <p>TDEE: {tdee.toFixed(2)}</p>
             <form>
                 <label for="choices">Choose one:</label>
                 <select id="choices" name="choices" value={multiplier} onChange={handleMultiplierChange}>
