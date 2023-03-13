@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import './App.css';
 import ActivityForm from './ActivityForm';
+import LoadingScreen from './LoadingScreen';
 
 function App() {
   const [measurement, setMeasurement] = useState("imperial");
@@ -13,13 +14,13 @@ function App() {
   const [age, setAge] = useState(0);
   const [caloriesConsumed, setCaloriesConsumed] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const appElement = document.querySelector(".App");
-
     setTimeout(() => {
-      appElement.classList.remove('blur-in');
-    }, 500);
+      console.log("set loading is now false");
+      setLoading(false);
+    }, 2000);
   }, []);
 
   const handleMeasurementChange = (event) => {
@@ -82,61 +83,65 @@ function App() {
   }, [measurement, gender, weight, age]);
 
   return (
-    <div className="App blur-in">
-        <h1>Calorie Counter</h1>
-        <p>Fill out the form to calculate your weight trajectory over time</p>
-        <form onSubmit={handleSubmit}>
-          <div className="input-container">
-            <label>
-              Imperial
-              <input type="radio" value="imperial" checked={measurement === "imperial"} onChange={handleMeasurementChange} />
-            </label>
-            <label>
-              Metric
-              <input type="radio" value="metric" checked={measurement === "metric"} onChange={handleMeasurementChange} className="opposite-side" />
-            </label>
-          </div>
-          <div className="input-container">
-            <label>
-              Male
-              <input type="radio" value="male" checked={gender === "male"} onChange={handleGenderChange} />
-            </label>
-            <label>
-              Female
-              <input type="radio" value="female" checked={gender === "female"} onChange={handleGenderChange} className="opposite-side" />
-            </label>
-          </div>
-          <div className="input-container">
-            <label>
-              Age:
-              <input type="number" step="1" value={age} onChange={(event) => setAge(event.target.value)} />
-            </label>
-            <label>
-              Weight:
-              <input type="number" step="1" value={weight} onChange={(event) => setWeight(event.target.value)} />
-            </label>
-            <label>
-              Height:
-              <input type="number" step="1" value={height} onChange={(event) => setHeight(event.target.value)} />
-            </label>
-          </div>
-          <div className="input-container">
-            <label>
-              Daily calories to consume:
-              <input type="number" step="1" value={caloriesConsumed} onChange={(event) => setCaloriesConsumed(event.target.value)} />
-            </label>
-          </div>
-          <button type="submit" className={isSubmitting ? 'submitting' : ''}>Submit</button>
-        </form>
-        {submitClicked && (
-          <ActivityForm 
-            measurement={measurement} 
-            caloriesConsumed={caloriesConsumed} 
-            weight={weight} 
-            tdee={tdee} 
-          />
-        )}
-        
+    <div className="App">
+      {loading && (<LoadingScreen />)}
+      {!loading && (
+        <>
+          <h1>Calorie Counter</h1>
+          <p>Fill out the form to calculate your weight trajectory over time</p>
+          <form onSubmit={handleSubmit}>
+            <div className="input-container">
+              <label>
+                Imperial
+                <input type="radio" value="imperial" checked={measurement === "imperial"} onChange={handleMeasurementChange} />
+              </label>
+              <label>
+                Metric
+                <input type="radio" value="metric" checked={measurement === "metric"} onChange={handleMeasurementChange} className="opposite-side" />
+              </label>
+            </div>
+            <div className="input-container">
+              <label>
+                Male
+                <input type="radio" value="male" checked={gender === "male"} onChange={handleGenderChange} />
+              </label>
+              <label>
+                Female
+                <input type="radio" value="female" checked={gender === "female"} onChange={handleGenderChange} className="opposite-side" />
+              </label>
+            </div>
+            <div className="input-container">
+              <label>
+                Age:
+                <input type="number" step="1" value={age} onChange={(event) => setAge(event.target.value)} />
+              </label>
+              <label>
+                Weight:
+                <input type="number" step="1" value={weight} onChange={(event) => setWeight(event.target.value)} />
+              </label>
+              <label>
+                Height:
+                <input type="number" step="1" value={height} onChange={(event) => setHeight(event.target.value)} />
+              </label>
+            </div>
+            <div className="input-container">
+              <label>
+                Daily calories to consume:
+                <input type="number" step="1" value={caloriesConsumed} onChange={(event) => setCaloriesConsumed(event.target.value)} />
+              </label>
+            </div>
+            <button type="submit" className={isSubmitting ? 'submitting' : ''}>Submit</button>
+          </form>
+        </>
+      )}
+      {submitClicked && (
+        <ActivityForm 
+          measurement={measurement} 
+          caloriesConsumed={caloriesConsumed} 
+          weight={weight} 
+          tdee={tdee} 
+        />
+      )}
     </div>
   );
 }
